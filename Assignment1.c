@@ -13,9 +13,15 @@ int fibonacci(int n) {
 }
 
 int main(int argc, char *argv[]) {
+    pid_t pid;
+
     if (argc < 2 || argc > 9) {
         fprintf(stderr, "Usage: %s x1 [x2 ... x9]\n", argv[0]);
         return 1;
+    }
+
+    for(int i = 1; i < argc; i++){
+        pid + fork();
     }
 
     int num = atoi(argv[1]);
