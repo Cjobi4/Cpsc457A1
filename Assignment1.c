@@ -15,14 +15,17 @@ int fibonacci(int n) {
 
 int main(int argc, char *argv[]) {
     pid_t pid;
+    int n;
+    int i;
+
 
     if (argc < 2 || argc > 9) {
         fprintf(stderr, "Usage: %s x1 [x2 ... x9]\n", argv[0]);
         return 1;
     }
 
-    for(int i = 1; i < argc; i++){
-        int n = atoi(argv[i]);
+    for(i = 1; i < argc; i++){
+        n = atoi(argv[i]);
         pid = fork();
 
         if (pid < 0) {
@@ -31,7 +34,7 @@ int main(int argc, char *argv[]) {
         }
 
         if (pid == 0) {
-            printf("Child Process (PID %d) F{%d} = d%\n", getpid(), n, fibonacci(n));
+            printf("Child Process (PID %d) F{%d} = %d\n", getpid(), n, fibonacci(n));
             exit(0);
         }
     }
