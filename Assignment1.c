@@ -24,6 +24,11 @@ int main(int argc, char *argv[]) {
     for(int i = 1; i < argc; i++){
         int n = atoi(argv[i]);
         pid = fork();
+
+        if (pid < 0) {
+            fprintf(stderr, "Failed to fork process\n");
+            exit(1);
+        }
     }
 
     int num = atoi(argv[1]);
