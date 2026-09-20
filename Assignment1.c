@@ -29,9 +29,11 @@ int main(int argc, char *argv[]) {
             fprintf(stderr, "Failed to fork process\n");
             exit(1);
         }
+
+        if (pid == 0) {
+            printf("Child Process (PID %d) F{%d} = d%\n", getpid(), n, fibonacci(n));
+            exit(0);
+        }
     }
 
-    int num = atoi(argv[1]);
-    printf("Fibonacci of %d is: %d\n", num, fibonacci(num));
-    return 0;
 }
