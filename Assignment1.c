@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Function to calculate the nth Fibonacci number
+/* Function to calculate the nth Fibonacci number */
 int fibonacci(int n) {
     if (n == 0) {
         return 0;
