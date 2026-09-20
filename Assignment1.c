@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /* Function to calculate the nth Fibonacci number */
 int fibonacci(int n) {
@@ -11,11 +12,13 @@ int fibonacci(int n) {
     }
 }
 
-int main() {
-    int num;
-    printf("Enter a number: ");
-    scanf("%d", &num);  
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <number>\n", argv[0]);
+        return 1;
+    }
 
+    int num = atoi(argv[1]);
     printf("Fibonacci of %d is: %d\n", num, fibonacci(num));
     return 0;
 }
