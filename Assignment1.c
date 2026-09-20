@@ -13,8 +13,8 @@ int fibonacci(int n) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <number>\n", argv[0]);
+    if (argc < 2 || argc > 9) {
+        fprintf(stderr, "Usage: %s x1 [x2 ... x9]\n", argv[0]);
         return 1;
     }
 
