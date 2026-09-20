@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /* Function to calculate the nth Fibonacci number */
 int fibonacci(int n) {
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
     }
 
     for(int i = 1; i < argc; i++){
+        int n = atoi(argv[i]);
         pid + fork();
     }
 
