@@ -39,4 +39,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    /* This is to make sure the parent waits for each child*/
+    for(i = 1; i < argc; i++){
+        wait(NULL);
+    }
+
+    return 0;
 }
