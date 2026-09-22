@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include<sys/wait.h>
 
 /* Function to calculate the nth Fibonacci number */
 int fibonacci(int n) {
