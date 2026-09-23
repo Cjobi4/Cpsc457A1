@@ -1,3 +1,5 @@
+/* Command to complie gcc Assignment1.c -o Assignment1*/
+/* ./Assignemnt1 4 5 7 8 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
