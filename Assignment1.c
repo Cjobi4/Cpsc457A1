@@ -57,6 +57,12 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    close(pipefd[1]); /* Closing the writing and now going to reading */
+    p_read = fdopen(pipefd[0], "r");
+
+    
+
+
     /* This is to make sure the parent waits for each child*/
     for(i = 1; i < argc; i++){
         wait(NULL);
