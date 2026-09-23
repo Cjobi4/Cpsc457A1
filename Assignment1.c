@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include<sys/wait.h>
 
-#define Buffer_size 64
+#define BUFFER_SIZE 64
 
 /* Function to calculate the nth Fibonacci number */
 int fibonacci(int n) {
@@ -23,14 +23,15 @@ int main(int argc, char *argv[]) {
     int pipefd[2];
     FILE *p_read, *p_write;
 
-    if(pipe(pipefd) < 0){
-        fprintf(stderr, "Failed to complete pipe\n");
-        exit(1);
-    }
 
     if (argc < 2 || argc > 9) {
         fprintf(stderr, "Usage: %s x1 [x2 ... x9]\n", argv[0]);
         return 1;
+    }
+
+    if(pipe(pipefd) < 0){
+        fprintf(stderr, "Failed to complete pipe\n");
+        exit(1);
     }
 
     for(i = 1; i < argc; i++){
@@ -43,6 +44,7 @@ int main(int argc, char *argv[]) {
         }
 
         if (pid == 0) {
+            char write_buffer[BUFFER_SIZE]; /* This is going to be used to send the message to the pipe by the Child Process*/
             printf("Child Process (PID %d) F{%d} = %d\n", getpid(), n, fibonacci(n));
             exit(0);
         }
