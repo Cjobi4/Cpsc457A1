@@ -45,7 +45,14 @@ int main(int argc, char *argv[]) {
 
         if (pid == 0) {
             char write_buffer[BUFFER_SIZE]; /* This is going to be used to send the message to the pipe by the Child Process*/
-            printf("Child Process (PID %d) F{%d} = %d\n", getpid(), n, fibonacci(n));
+
+            close(pipefd[0]); /*We are closing this because we dont need the child to read only write*/
+            p_write = fdopen(pipefd[1], "w" );
+
+            snprintf(write_buffer, BUFFER_SIZE, "%d %d %d\n", getpid(), n, fibonacci(n));
+            fprintf(p_write, "%s", write_buffer);
+            fclose(p_write);
+
             exit(0);
         }
     }
