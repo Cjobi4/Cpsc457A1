@@ -60,7 +60,14 @@ int main(int argc, char *argv[]) {
     close(pipefd[1]); /* Closing the writing and now going to reading */
     p_read = fdopen(pipefd[0], "r");
 
-    
+    /* This allows the parent to reach each childs answers from the pipe and then print it*/
+    for(i = 1; i < argc; i++){
+        int child_pid, num, answer;
+        fscanf(p_read, "%d %d %d ", &child_pid, &num, &answer);
+        printf("Child Process (PID %d) Fib{%d} = %d\n", child_pid, num, answer);
+        
+    }
+    fclose(p_read);
 
 
     /* This is to make sure the parent waits for each child*/
